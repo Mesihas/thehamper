@@ -1,0 +1,52 @@
+﻿@model AddressUpdateViewModel
+@using System.Security
+
+
+<h2>Profile</h2>
+ Welcome @User.Identity.Name
+
+<p>Update Address Details</p>
+<form asp-controller="Profile" asp-action="UpdateAddress" method="post">
+
+    <div>
+        <label asp-for="AddressUser"></label>
+        <input asp-for="AddressUser" />
+    </div>
+
+    <div>
+        <label asp-for="City"></label>
+        <input asp-for="City" />
+    </div>
+
+    <div>
+        <label asp-for="State"></label>
+        <input asp-for="State" />
+    </div>
+
+    <div>
+        <label asp-for="ZipCode"></label>
+        <input asp-for="ZipCode" />
+    </div>
+
+    <div>
+        <label asp-for="Default"></label>
+        <input asp-for="Default" />
+    </div>
+
+    <div>
+        <input asp-for="ProfileId" type="hidden" />
+    </div>
+    <div>
+        <input asp-for="AddressId" type="hidden" />
+    </div>
+
+    @*<div class="form-group">
+            <label>Select Category</label>
+            <select class="form-control col-md-2" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories ,"CategoryId","Name"))"></select>
+        </div>*@
+
+
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+</form>

@@ -1,0 +1,16 @@
+﻿@model CategoryCreateViewModel
+
+<h4>New Category</h4><br />
+<form asp-controller="Category" asp-action="Create" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Details"></label>
+        <input asp-for="Details" />
+    </div>
+    <div>
+        <input type="Submit" class="btn btn-primary" value="Save" />
+    </div>
+</form>

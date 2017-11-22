@@ -1,0 +1,19 @@
+﻿@model ProfileUpdateViewService
+<h3>Update Profile</h3>
+<br />
+<form asp-controller="Profile" asp-action="UpdateProfile" method="post">
+    <div>
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" />
+    </div>
+    <div>
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" />
+    </div>
+    <div>
+        <input type="hidden" asp-for="ProfileId" />
+    </div>
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+</form>

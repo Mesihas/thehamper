@@ -1,0 +1,125 @@
+﻿@using System.Security
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row p-2 mt-2 align-items-center">
+            <div class="col-md-2">
+                <img src="~/images/hamper-logo.png" width="200" height="60" class="d-inline-block align-top" alt="" />  
+            </div>
+            <div class="col-md-5">               
+            </div>    
+            <div class="col-md-3">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <div>
+                        @Html.ActionLink("login", "Login", "Account") |
+                        @Html.ActionLink("Register", "Register", "Account")                  
+                    </div>
+                }
+                else
+                {
+                    <div class="align-middle">
+                        Welcome @User.Identity.Name  |
+                        @Html.ActionLink(" Profile", "Index", "Profile") |
+                        @Html.ActionLink(" Logout", "Logout", "Account")
+                    </div>
+                }
+            </div>
+            <div class="col-md-2">                             
+                <a href="@Url.Action("Index", "Cart", new { id = @HttpContextAccessor.HttpContext.Session.GetInt32("OrderId")})">
+                    (@HttpContextAccessor.HttpContext.Session.GetInt32("totalItems"))
+                    <img src="~/images/cart-icon.png" width="30" height="30" />
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    $ @HttpContextAccessor.HttpContext.Session.GetString("SumItems") Au
+                </a>
+            </div>
+        </div>
+        <div class="row bg-secondary">          
+                <div class="col-md-12">                  
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link  text-light" href="/Home/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#">About US</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light " href="#">Contact US</a>
+                        </li>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                            }
+                            else
+                            {
+                                @if (User.IsInRole("Administrator") || User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item " href="/Account/Register">Register</a>
+                                            <a class="dropdown-item" href="/Account/Addrole">Add Role</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="/Category/Index">Categories</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="/Hamper/Index">Hampers</a>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                    </ul>
+                </div>            
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <br />
+                @RenderBody()
+            </div>
+        </div>
+        <!--  Footer Area-->
+        <div class="row mt-4 bg-dark">
+            <div class="col">
+                <div style="width: 20rem;">
+                    <div class="card-body text-light">
+                        <h4 class="card-title text-light"><a class="dropdown-item text-light" href="/Home/Privacy">Privacy Policy</a></h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div style="width: 20rem;">
+                    <div class="card-body text-light">
+                        <h4 class="card-title"><a class="dropdown-item text-light" href="/Home/ToU">Terms of Use</a></h4>
+       
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div style="width: 20rem;">
+                    <div class="card-body text-light">
+                        <h4 class="card-title">Keep in touch</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                        Ale=ale123//Admin=admin1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bg-dark text-light justify-content-center">
+            <div class="col-12 justify-content-center">
+                    Copyrigth TheHumper 2017
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/popper.js/dist/umd/popper.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

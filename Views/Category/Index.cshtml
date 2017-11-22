@@ -1,0 +1,40 @@
+﻿@model CategoryIndexViewModel
+
+<h2>Categories</h2>
+
+<p> Total Categories: @Model.Total</p>
+
+<div class="col-6">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> Category Id </th>
+                <th> Name </th>
+                <th> Description</th>
+                <th> Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Categories)
+
+            {
+
+                <tr>
+                    <td>@item.CategoryId</td>
+                    <td>@item.Name</td>
+                    <td>@item.Details</td>
+                    <td>@Html.ActionLink("...Edit", "Update", "Category", new { id = item.CategoryId })</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<a href="@Url.Action("Create", "Category")" class="btn btn-warning">
+    Add new Category
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+</a>

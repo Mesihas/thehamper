@@ -1,0 +1,67 @@
+﻿@model CheckoutIndexViewModel
+
+<h2>Checkout</h2>
+<hr />
+<div class="row">
+    <div class="col-4">
+        <p> <strong> Date:</strong>@Model.Date.ToString("MM/dd/yyyy")</p>
+        <p><strong> User:</strong> @Model.UserId</p>
+        <p><strong> Order:</strong> @Model.OrderId</p>
+    </div>
+    <div class="col-4">
+        <p><strong> Order State:</strong> @Model.OrderState</p>
+        <p><strong>Total Items:</strong> @Model.totalItems</p>
+        <p><strong>Total $:</strong> @Model.SumItems AUD</p>
+    </div>
+</div>
+<hr />
+<h5>Select your prefered delivery address</h5><p> Total Address found: @Model.TotalAddress</p>
+<div class="col-12">
+    <form asp-controller="Checkout" asp-action="Index" method="post">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>  Id </th>
+                    <th> Addrress </th>
+                    <th> City </th>
+                    <th> State</th>
+                    <th> ZipCode</th>
+                    <th> Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.AddressList)
+            {
+                    <tr>
+                        <td>@item.AddressId</td>
+                        <td>@item.AddressUser</td>
+                        <td>@item.City</td>
+                        <td>@item.State</td>
+                        <td>@item.ZipCode</td>
+                        <th><input type="radio" asp-for="DefaultAddress" value="@item.AddressId" /></th>
+                        @*<td>@Html.ActionLink("Select", "close", "Checkout", new { id = item.AddressId })</td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+        <h4>Prefered payment method</h4>
+        <div class="row">
+            <div class="col-2 mr-1">
+                <img src="~/images/paypal_logo.png" width="120" />
+            </div>
+            <div class="col-1">
+                <img src="~/images/bpay.png" width="120" />
+            </div>
+        </div>
+        <hr />
+        <div>
+            <input type="submit" class="btn btn-danger" value="Commit Purchase" />
+        </div>
+    </form>
+    <hr />
+    <a href="@Url.Action("Index", "Home")" class="btn btn-success">
+        Continue Shopping
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    </a>
+</div>

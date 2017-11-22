@@ -1,0 +1,34 @@
+﻿@model OrderDetailViewModel
+<h2>Orders</h2>
+<h5>Category: @Model.CategoryName</h5>
+<p>Branch: @Model.BranchName</p>
+<p>Total Products : @Model.Total</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> Product Id </th>
+            <th> Name </th>
+            <th> Qtity </th>
+            <th> </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.OrderDetails)
+    {
+        <tbody>
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.Quantity</td>
+                <td></td>
+            </tr>
+        </tbody>
+    }
+</table>
+
+<ul class="nav">
+    
+    <li class="nav-item">
+        <a class="nav-link active" @Html.ActionLink("Back to Orders", "Index", "Order")</a>
+    </li>
+</ul>

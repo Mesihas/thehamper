@@ -1,0 +1,57 @@
+﻿@model HamperIndexViewModel
+
+<h2>Hampers</h2>
+
+<p> Total Hampers: @Model.Total</p>
+
+<div class="col-8">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> Hamper Id </th>
+                <th> Name </th>
+                <th> Price </th>
+                <th> Category</th>
+                <th> Description</th>
+                <th> Discontinued</th>
+                <th> Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Hampers)
+            {
+                <tr>
+                    <td>@item.HamperId</td>
+                    <td>@item.HamperName</td>
+                    <td>@item.HamperPrice</td>
+                    @foreach (var cat in Model.Categories)
+                    {
+                        if (@item.CategoryId == cat.CategoryId)
+                        {
+                            <td>@cat.Name</td>
+                        }
+                    }
+                   
+                    <td>@item.Description.Substring(0, 40)</td>
+                    @if (item.Discontinued == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    <td>@Html.ActionLink("...Edit", "Update", "Hamper", new { id = item.HamperId })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<a href="@Url.Action("Create", "Hamper")" class="btn btn-warning">
+    Add new Hamper
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+</a>
+
+
