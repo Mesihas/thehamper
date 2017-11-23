@@ -1,5 +1,4 @@
 Hampers online store Asp.net core 1 / SQL Server / razor /Bootstrap /MongoDB (optional for Cart)
-project.json and Bower file included. 
 
 This project was created as the final course assesment.
 
