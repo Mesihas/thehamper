@@ -11,8 +11,6 @@ Tests: Several load and performance test has been coducted for this app.
 
 List of User Stories for Web Application
 
-List of User Stories for Web Application
-Membership User Stories:
 1. As a customer, I want to be able to register.
 2. As a customer, I want to be able to login.
 3. As a customer, I want to be able to logout.
