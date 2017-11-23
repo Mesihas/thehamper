@@ -11,6 +11,7 @@ Tests: Several load and performance test has been coducted for this app.
 
 List of User Stories for Web Application
 
+List of User Stories for Web Application
 Membership User Stories:
 1. As a customer, I want to be able to register.
 2. As a customer, I want to be able to login.
@@ -18,7 +19,6 @@ Membership User Stories:
 4. As a customer, I want to be able to update my profile.
 5. As an admin, I want to be able to login so that I can manage hampers in the system.
 6. As an admin, I want to be able to logout.
-
 Admin User Stories:
 7. As an admin, I want to be able to add new category by specifying the category name, so
 that the customers can search for hampers in a selected category.
@@ -30,7 +30,6 @@ the system.
 category, price, and description so that the information will always be accurate.
 11. As an admin, I want to be able to discontinue existing hampers from the system, so that the
 customers will not be able to find retired hampers in the system.
-
 Customer User Stories:
 12. As a customer, I want to search for existing hampers by the category, so that I can easily
 find all hampers in that category.
